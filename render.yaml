@@ -1,0 +1,15 @@
+# Render.com Cron Job Blueprint
+
+services:
+  - type: cron
+    name: daily-rank-tracker
+    runtime: node
+    plan: free
+    schedule: "0 6 * * *"  # Daily at 6am UTC
+    buildCommand: npm install
+    startCommand: node src/index.js --domain cirvgreen.com --keywords "wordpress schema plugin,seo schema markup,cirv box"
+    envVars:
+      - key: APIFY_TOKEN
+        sync: false
+      - key: NODE_ENV
+        value: production

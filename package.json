@@ -1,0 +1,19 @@
+{
+  "name": "daily-seo-rank-tracker",
+  "version": "1.0.0",
+  "description": "Automated daily SERP tracking with change detection and alerts",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "track": "node src/index.js",
+    "test": "node src/index.js --domain cirvgreen.com --keywords 'wordpress schema plugin' --country us"
+  },
+  "keywords": ["seo", "serp", "rank-tracking", "apify"],
+  "author": "Cirvgreen",
+  "license": "MIT",
+  "dependencies": {
+    "apify-client": "^2.9.0",
+    "dotenv": "^16.3.1",
+    "nodemailer": "^6.9.0"
+  }
+}
