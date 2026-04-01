@@ -1,3 +1,5 @@
+![Banner](banner.svg)
+
 # Daily SEO Rank Tracker - MCP Automated PRD
 
 **Created:** 2026-01-23
