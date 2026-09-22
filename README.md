@@ -1,50 +1,59 @@
-<div align="center">
+![Nicholas Ashkar — daily-seo-rank-tracker](assets/nicholas-ashkar/banner.png)
 
 # daily-seo-rank-tracker
 
-**Track Google keyword rankings daily, detect position changes, and save Markdown + CSV reports.**
+Uses an Apify search actor to record a domain's positions for selected keywords.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-0B0A09?style=flat-square)](LICENSE)
-[![Node](https://img.shields.io/badge/Node-%3E%3D18-0B0A09?style=flat-square&logo=node.js)](https://nodejs.org)
 
-</div>
 
-## Install
+<a id="usage"></a>
 
-```bash
-git clone https://github.com/NickCirv/daily-seo-rank-tracker.git
-cd daily-seo-rank-tracker
-npm install
-```
-
-Requires an [Apify](https://apify.com) API token:
-
-```bash
-export APIFY_TOKEN=your_token_here
-```
-
-## Usage
-
-```bash
-node src/index.js --domain example.com --keywords "seo audit tool,rank tracker" --country us
-```
-
-```bash
-# Multi-keyword with UK locale
-node src/index.js --domain mysite.co.uk --keywords "wordpress plugin,schema markup,seo checker" --country gb
-```
-
-| Flag | Description |
-|------|-------------|
-| `--domain` | Domain to track (e.g. `example.com`) |
-| `--keywords` | Comma-separated keyword list |
-| `--country` | Google country code (default: `us`) |
+<a id="multi-keyword-with-uk-locale"></a>
 
 ## What it does
 
-Calls the Apify Google Search Scraper for each keyword and finds your domain's position in the top 100 organic results. On each run it compares against the previous day's data and flags any keyword that moved 3 or more positions. Results are saved to `reports/<domain>-<date>.md` and `reports/<domain>-<date>.csv`, with history stored in `data/<domain>_history.json` (90-day rolling window).
+- Keyword/domain/country inputs.
+- Saved history.
+- Movement thresholds.
+- Generated reports.
 
-Run it daily via cron or a scheduler (e.g. `render.yaml` is included for Render deploys).
 
----
-<sub>Node ≥18 · MIT · by <a href="https://github.com/NickCirv">NickCirv</a></sub>
+<a id="install"></a>
+
+## Quickstart
+
+Prerequisites: Node.js `>=20` and npm. The checkout below pins the source used for this documentation.
+
+```sh
+git clone https://github.com/NickCirv/daily-seo-rank-tracker.git
+cd daily-seo-rank-tracker
+git checkout 389d69a4fa96613853306540f10577f3050f64ce
+npm install
+node src/index.js --domain example.com --keywords "example" --country us
+```
+
+**Expected behavior (illustrative, not captured):** With APIFY_TOKEN configured, records the observed rank and generates a report for the requested query.
+
+Examples are source-inspected, **not runtime-tested**. See the research record for verification gaps.
+
+## Boundaries and data
+
+Search results vary by location, time and actor behavior. Apify calls can incur usage; this script does not schedule itself or guarantee live daily runs. No current SERP was fetched for this review.
+
+## Development
+
+The manifest defines `npm test` as:
+
+```sh
+node --test
+```
+
+The captured suite is a smoke check, not end-to-end behavior coverage. Examples include “entry is valid JavaScript”. Tests were not run for this documentation revision.
+
+See [implementation and command reference](docs/REFERENCE.md) for the package scripts and inspected interfaces, and [research record](docs/RESEARCH.md) for the pinned source, document decisions and unresolved checks.
+
+## License and contact
+
+See [LICENSE](LICENSE) for the original terms and attribution. Legal text is unchanged.
+
+[Nicholas Ashkar](https://nicholashkar.com/) · [Discuss a project](https://nicholashkar.com/#oxblood-contact)
